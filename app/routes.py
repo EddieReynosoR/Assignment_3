@@ -1,11 +1,14 @@
 from flask import (
     Flask,
-    request
+    request,
+    render_template
 )
 
 from app.database import data_types
 
 app = Flask(__name__)
+
+
 
 @app.get("/data_types")
 def index():
@@ -25,6 +28,26 @@ def floats():
 @app.get("/data_types/booleans")
 def booleans():
     out = data_types.select_by_type(name="Booleans")
+    return out
+
+@app.get("/data_types/strings")
+def strings():
+    out = data_types.select_by_type(name="Strings")
+    return out
+
+@app.get("/data_types/lists")
+def lists():
+    out = data_types.select_by_type(name="Lists")
+    return out
+
+@app.get("/data_types/dictionaries")
+def dictionaries():
+    out = data_types.select_by_type(name="Dictionaries")
+    return out
+
+@app.get("/data_types/tuples")
+def tuples():
+    out = data_types.select_by_type(name="Tuples")
     return out
 
 
